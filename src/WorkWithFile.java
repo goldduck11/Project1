@@ -14,36 +14,36 @@ public class WorkWithFile {
     String CreateFile() throws IOException {
         String FileName;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Хотите ли вы сами указать путь к файлу?(Yes/No)");
-        System.out.print("Ответ: ");
+        System.out.println("РҐРѕС‚РёС‚Рµ Р»Рё РІС‹ СЃР°РјРё СѓРєР°Р·Р°С‚СЊ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ?(Yes/No)");
+        System.out.print("РћС‚РІРµС‚: ");
         String flag = sc.nextLine();
-        if (!flag.equalsIgnoreCase("Yes") || !flag.equalsIgnoreCase("No")){
+        if (!flag.equalsIgnoreCase("Yes") && !flag.equalsIgnoreCase("No")){
             do{
-                System.out.println("Неправильный ввод. Попробуйте снова.");
-                System.out.println("Хотите ли вы сами указать путь к файлу?(Yes/No)");
-                System.out.print("Ответ: ");
+                System.out.println("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.");
+                System.out.println("РҐРѕС‚РёС‚Рµ Р»Рё РІС‹ СЃР°РјРё СѓРєР°Р·Р°С‚СЊ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ?(Yes/No)");
+                System.out.print("РћС‚РІРµС‚: ");
                 flag = sc.nextLine();
             }while (!flag.equalsIgnoreCase("Yes") && !flag.equalsIgnoreCase("No"));
         }
         if (flag.equalsIgnoreCase("Yes")) {
-            System.out.print("Введите путь к вашему файлу: ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ Рє РІР°С€РµРјСѓ С„Р°Р№Р»Сѓ: ");
             FileName = sc.nextLine();
             Path path = Paths.get(FileName.toString());
-            List<String> list = Files.readAllLines(path);
             if (!Files.exists(path)) {
                 Files.createFile(path);
-                System.out.println("файл создан");
+                System.out.println("Р¤Р°Р№Р» СЃРѕР·РґР°РЅ");
             } else {
-                System.out.println("Файл был открыт");
+                System.out.println("Р¤Р°Р№Р» Р±С‹Р» РѕС‚РєСЂС‹С‚");
             }
+            List<String> list = Files.readAllLines(path);
         } else{
             FileName = "temp.dat.txt";
             Path path = Paths.get(FileName);
             if (!Files.exists(path)) {
                 Files.createFile(path);
-                System.out.println("файл создан");
+                System.out.println("С„Р°Р№Р» СЃРѕР·РґР°РЅ");
             } else {
-                System.out.println("Файл был открыт");
+                System.out.println("Р¤Р°Р№Р» Р±С‹Р» РѕС‚РєСЂС‹С‚");
             }
         }
 
@@ -76,10 +76,10 @@ public class WorkWithFile {
     }
 
 
-    //Поиск в файле по заданному параметру
+    //РџРѕРёСЃРє РІ С„Р°Р№Р»Рµ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РїР°СЂР°РјРµС‚СЂСѓ
     /*void FindOnFile(String FileName) throws IOException {
         Path path = Paths.get(FileName);
-        String find = "Волков";
+        String find = "Р’РѕР»РєРѕРІ";
         try (Stream<String> lines = Files.lines(path)) {
             if (lines.anyMatch(l -> l.contains(find))) {
                 System.out.println("found");
